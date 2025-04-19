@@ -45,7 +45,9 @@ const update = (req, res) => {
 
 const remove = (req, res) => {
     const id = req.params.id
-    console.log(id)
+    
+    models.deleteProduct(id)
+
     res.send('DELETED Producto')
 }
 
