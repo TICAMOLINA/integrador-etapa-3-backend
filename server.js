@@ -17,6 +17,7 @@ app.use(express.json())
 
 // ! RUTAS
 app.use('/api/v1/productos', routerProducts)
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
