@@ -22,8 +22,16 @@ const getOneProduct = async (id) => {
 }
 
 
-const createProduct = (newProduct) => {
+const createProduct = async (newProduct) => {
 
+    try {
+        const productToSave = new ProductModel(newProduct)
+        const savedProduct = await productToSave.save()
+        return savedProduct
+
+    } catch (error) {
+        throw error
+    }
 }
 
 
