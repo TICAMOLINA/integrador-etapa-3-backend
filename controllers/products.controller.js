@@ -1,11 +1,23 @@
-const getAll = (req, res) => {
-    res.send('GET ALL')
+import models from '../models/products.model.js'
+
+const getAll = async (req, res) => {
+    try {
+        const products = await models.getAllProducts()
+        res.json(products)        
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-const getOne = (req, res) => {
+const getOne = async (req, res) => {
     const id = req.params.id
-    console.log(id);
-    res.send('GET ONE')
+    try {
+        const product = await models.getOneProduct(id)
+        res.json(product)
+        // Hay que hacer algo si no lo recibo        
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const create = (req, res) => {

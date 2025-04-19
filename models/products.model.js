@@ -1,11 +1,24 @@
+import { ProductModel } from "./schemaProducts.js";
 
-const getAllProducts = () => {
 
+
+const getAllProducts = async () => {
+    try {
+        const products = await ProductModel.find()
+        return products
+    } catch (error) {
+        throw error
+    }
 }
 
 
-const getOneProduct = (id) => {
-
+const getOneProduct = async (id) => {
+    try {
+        const product = await ProductModel.findById(id)
+        return product
+    } catch (error) {
+        throw error
+    }
 }
 
 

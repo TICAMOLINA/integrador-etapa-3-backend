@@ -18,7 +18,8 @@ const ProductSchema = mongoose.Schema(
         envio: Boolean
     },
     {
-
+        timestamps: true,
+        versionKey: false
     }
 )
 
@@ -26,4 +27,4 @@ const ProductSchema = mongoose.Schema(
 
 const ProductModel = mongoose.model('productos', ProductSchema)
 
-export default schemaProducts
+export { ProductModel }
