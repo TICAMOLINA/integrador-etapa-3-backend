@@ -13,6 +13,16 @@ const getOne = async (req, res) => {
 const create = async (req, res) => {
     // Faltan hacer validaciones
     const newUser = req.body
+
+    const { nombre, correo, password, confirm_password } = newUser
+
+    if ( password !== confirm_password) {
+        console.log('La contraseña no coincide');
+        return res.status(500).json({
+            mensaje: 'Las contraseñas no coinciden'
+        })
+    }
+
     try {
         const createdUser = await models.createUser(newUser)
         res.status(201).json(createdUser)      
