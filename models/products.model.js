@@ -35,12 +35,25 @@ const createProduct = async (newProduct) => {
 }
 
 
-const editProduct = (editedProduct) => {
-
+const editProduct = async (productToEdit) => {
+    try {
+        const options = { new: true }
+        const editedProduct = await ProductModel.findByIdAndUpdate(productToEdit.id, productToEdit, options)
+        return editedProduct
+    } catch (error) {
+        throw error
+    }
 }
 
 
-const deleteProduct = (id) => {
+const deleteProduct = async (id) => {
+
+    try {
+        const deletedProduct = await ProductModel.findByIdAndDelete(id)
+        return deletedProduct
+    } catch (error) {
+        throw error
+    }
 
 }
 

@@ -26,7 +26,7 @@ const create = async (req, res) => {
     const productToCreate = req.body
     try {
         const savedProduct = await models.createProduct(productToCreate)
-        res.json(savedProduct)      
+        res.status(201).json(savedProduct)      
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -35,20 +35,35 @@ const create = async (req, res) => {
     }
 }
 
-const update = (req, res) => {
+const update = async (req, res) => {
     const id = req.params.id
-    const productoAEditar = req.body
-    console.log(id)
-    console.log(productoAEditar)
-    res.send('UPDATE producto')
+    const productToEdit = req.body
+    productToEdit.id = id
+
+    try {
+        const editedProduct = await models.editProduct(productToEdit)
+        res.json(editedProduct)
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            mensaje: 'No se pudo editar el producto'
+        })
+    }
 }
 
-const remove = (req, res) => {
+const remove = async (req, res) => {
     const id = req.params.id
-    
-    models.deleteProduct(id)
+    try {
+        const deletedProduct = await models.deleteProduct(id)    
+        res.json(deletedProduct)
 
-    res.send('DELETED Producto')
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            mensaje: 'No se pudo borrar el producto'
+        })
+    }
 }
 
 export default {
