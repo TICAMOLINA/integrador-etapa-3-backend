@@ -2,6 +2,7 @@ import express from 'express'
 import 'dotenv/config'
 import mongoDConnection from './utils/connection.js'
 import routerProducts from './routers/products.router.js'
+import routerUsers from './routers/users.router.js'
 
 // ! CONSTANTES
 const app = express()
@@ -17,6 +18,7 @@ app.use(express.json())
 
 // ! RUTAS
 app.use('/api/v1/productos', routerProducts)
+app.use('/api/v1/usuarios', routerUsers)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
