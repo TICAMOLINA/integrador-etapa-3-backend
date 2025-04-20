@@ -9,12 +9,12 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        "apellido": String,
         "correo": {
             type: String,
             required: true,
             unique: true
         },
-        "apellido": String,
         "dni": String,
         "nacionalidad": String,
         "password": {

@@ -1,3 +1,4 @@
+import models from '../models/users.model.js'
 
 const getAll = async (req, res) => {
     console.log('getAll')
@@ -10,8 +11,17 @@ const getOne = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    console.log('create')
-    res.send('create')
+    // Faltan hacer validaciones
+    const newUser = req.body
+    try {
+        const createdUser = await models.createUser(newUser)
+        res.status(201).json(createdUser)      
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            mensaje: 'No se pudo crear el usuario'
+        })
+    }
 }
 
 const update = async (req, res) => {

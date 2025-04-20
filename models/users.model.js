@@ -23,8 +23,8 @@ const getOneUser = async (id) => {
 const createUser = async (newUser) => {
 
     try {
-        const userToSave = new UserModel(newUser)
-        const savedUser = await userToSave.save()
+        const userToCreate = new UserModel(newUser)
+        const savedUser = await userToCreate.save()
         return savedUser
 
     } catch (error) {
