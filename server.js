@@ -1,5 +1,6 @@
 import express from 'express'
 import 'dotenv/config'
+import path from 'node:path'
 import mongoDConnection from './utils/connection.js'
 import routerProducts from './routers/products.router.js'
 import routerUsers from './routers/users.router.js'
@@ -15,6 +16,7 @@ const URI_DB = process.env.URI_LOCAL
 
 // ! MIDDLEWARES
 app.use(express.json())
+app.use(express.static(path.join('public')))
 
 
 // ! RUTAS
