@@ -3,13 +3,17 @@ import mongoose from "mongoose";
 const cartSchema = mongoose.Schema(
     {
         carrito: Array
+    },
+    {
+        timestamps: true,
+        versionKey: false
     }
 )
 
 const CartModel = mongoose.model('carritos', cartSchema)
 
 
-const saveCart = async (carrito) => {
+const createCart = async (carrito) => {
 
     try {
         const cartCreated = new CartModel(carrito)
@@ -22,5 +26,5 @@ const saveCart = async (carrito) => {
 }
 
 export default {
-    saveCart
+    createCart
 }
