@@ -10,7 +10,7 @@ import routerUpload from './routers/uploads.router.js'
 // ! CONSTANTES
 const app = express()
 const PORT = process.env.PORT
-const URI_DB = process.env.URI_REMOTA
+const URI_DB = process.env.URI_LOCAL
 const URL_FRONT = process.env.URL_FRONTEND_CORS
 
 // ! CONFIGURACIONES
