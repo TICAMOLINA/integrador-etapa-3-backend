@@ -1,5 +1,5 @@
 
-const handleMongoId = (elemento) => { // elemento -> puede recibir un documento o un array de documentos. Va a ser un objeto mongoose
+const handleMongoId = (elemento) => {
     const clave = '_id'
     elemento = fromMongoVanilla(elemento)
 
