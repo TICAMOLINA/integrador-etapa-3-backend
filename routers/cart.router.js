@@ -5,5 +5,7 @@ import controller from '../controllers/cart.controller.js'
 
 routerCart.post('/', controller.saveCart)
 
+routerCart.get('/', controller.getAllCarts)
+
 
 export default routerCart
