@@ -1,5 +1,7 @@
 import models from '../models/products.model.js'
+import deleteImgfromBackend from '../utils/deleteImgfromBackend.js'
 import handleMongoId from '../utils/handle-mongo-id.js'
+
 
 const getAll = async (req, res) => {
     try {
@@ -54,9 +56,11 @@ const update = async (req, res) => {
 }
 
 const remove = async (req, res) => {
+    
     const id = req.params.id
     try {
-        const deletedProduct = await models.deleteProduct(id)    
+        const deletedProduct = await models.deleteProduct(id)
+        await deleteImgfromBackend(deletedProduct)
         res.json(handleMongoId(deletedProduct))
 
     } catch (error) {
@@ -66,6 +70,8 @@ const remove = async (req, res) => {
         })
     }
 }
+
+
 
 export default {
     getAll,
