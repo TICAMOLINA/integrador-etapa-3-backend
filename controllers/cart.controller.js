@@ -19,7 +19,7 @@ const getAllCarts = async (req, res) => {
         const carts = await model.getAllCarts()
         res.json(handleMongoId(carts))        
     } catch (error) {
-        console.log(error)
+        console.log('[getAllCart]', error)
         let message = 'No se pueden mostrar los carritos'
         res.status(500).json(message)
     }

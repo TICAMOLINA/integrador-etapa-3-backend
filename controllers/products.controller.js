@@ -16,12 +16,19 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
     const id = req.params.id
     try {
-        const product = await models.getOneProduct(id)
-        res.json(handleMongoId(product))
-        // Hay que hacer algo si no lo recibo        
+        if (id) {
+            const product = await models.getOneProduct(id)
+            res.json(handleMongoId(product))      
+        } else {
+            res.status(400).json({
+                mensaje: 'No se envió la información necesaria'
+            })
+        }        
     } catch (error) {
         console.log(error);
-        // poner mensaje para el front
+        res.status(500).json({
+            mensaje: 'Hubo un inconveniente, no se pudo obtener el producto', error
+        })
     }
 }
 
