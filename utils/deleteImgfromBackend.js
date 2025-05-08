@@ -6,9 +6,13 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const deleteImgfromBackend = async (deletedProduct) => {
-    if (deletedProduct && deletedProduct.foto) {
-        const placeholderImg = 'elementor-placeholder-image-3.webp'
-        const imgName = path.basename(deletedProduct.foto)
+    if (!deletedProduct) return
+    const placeholderImg = 'elementor-placeholder-image-3.webp'
+
+    const deleteImage = async (imageUrl) => {
+        if (!imageUrl) return
+
+        const imgName = path.basename(imageUrl)
 
         if (imgName !== placeholderImg) {
             const pathImage = path.join(__dirname, '..', 'public', 'uploads', imgName)            
@@ -20,6 +24,9 @@ const deleteImgfromBackend = async (deletedProduct) => {
             }
         }
     } 
+
+    await deleteImage(deletedProduct.foto)
+    await deleteImage(deletedProduct.sliderFoto)
 }
 
 export default deleteImgfromBackend
