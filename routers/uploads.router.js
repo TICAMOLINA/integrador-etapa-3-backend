@@ -4,6 +4,6 @@ import controller from '../controllers/uploads.controller.js'
 import uploadsMiddleware from '../middlewares/uploads.middleware.js'
 
 
-routerUpload.post('/', uploadsMiddleware.single('foto'), controller.uploadImage)
+routerUpload.post('/', uploadsMiddleware.single('foto'), controller.uploadImageCloud)
 
 export default routerUpload
